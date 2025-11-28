@@ -1,0 +1,11 @@
+import dotenv from 'dotenv';
+import pg from 'pg';
+
+dotenv.config();
+
+export const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: false   // 👈 disable SSL for local Postgres
+});
+
+
