@@ -1,4 +1,4 @@
-export default function CharacterCard({ character, onVote, onDelete, hasVoted }) {
+export default function CharacterCard({ character, onVote, hasVoted }) {
   if (!character) {
     return null;
   }
@@ -6,11 +6,11 @@ export default function CharacterCard({ character, onVote, onDelete, hasVoted })
   return (
     <div style={{ 
       border: '1px solid gray', 
-      padding: '20px', 
-      margin: '10px', 
-      width: '300px',
+      padding: '15px', 
+      width: '100%',
       backgroundColor: '#ffffff',
-      borderRadius: '8px'
+      borderRadius: '8px',
+      boxSizing: 'border-box'
     }}>
       <h3 style={{ color: '#000000', marginTop: 0, fontSize: '24px' }}>{character.name || 'Unknown'}</h3>
       <p style={{ color: '#000000', margin: '8px 0', fontSize: '16px' }}>House: {character.house || 'Unknown'}</p>
@@ -43,12 +43,12 @@ export default function CharacterCard({ character, onVote, onDelete, hasVoted })
           ✓ Thank you for voting!
         </div>
       )}
-      <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+      <div style={{ marginTop: '10px' }}>
         <button 
           onClick={() => onVote(character.id)}
           disabled={hasVoted}
           style={{
-            flex: 1,
+            width: '100%',
             padding: '12px',
             fontSize: '16px',
             backgroundColor: hasVoted ? '#cccccc' : '#2196F3',
@@ -60,21 +60,6 @@ export default function CharacterCard({ character, onVote, onDelete, hasVoted })
           }}
         >
           {hasVoted ? 'Already Voted' : 'Vote'}
-        </button>
-        <button 
-          onClick={() => onDelete(character.id)}
-          style={{
-            flex: 1,
-            padding: '12px',
-            fontSize: '16px',
-            backgroundColor: '#f44336',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          Delete
         </button>
       </div>
     </div>
